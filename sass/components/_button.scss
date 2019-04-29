@@ -1,0 +1,98 @@
+// Default button settings
+.btn {
+    display: flex;
+    align-items: center;
+    color: $color-white;
+    font-family: quicksand-bold;
+    font-size: 20px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all .2s;
+
+    // Gallery section btn
+    &-gallery { 
+        background-color: $color-gray; 
+
+        &:hover {
+            background-color: $color-blue;
+        }
+    }
+
+    @include respond(tab-land){
+        &-table {
+            font-size: 16px;
+            padding: 15px 30px;
+
+            & img {
+                height: 10px !important;
+                margin-left: 10px !important;
+            }
+        }
+        & img {
+            height: 15px !important;
+            margin-left: 10px !important;
+        }
+    }
+
+    @include respond(tab-port){
+        &-table {
+            padding: 10px 15px;
+
+            & img {
+                display: none;
+            }
+        }
+    }
+
+    @include respond(xs-phone){
+        &-table {
+            font-size: 16px;  
+            margin-bottom: 20px;   
+        }
+    }
+    
+    // Offers section btn
+    &-table { 
+        background-color: $color-blue; 
+
+        &:hover {
+            background-color: $color-blue-dark;
+        }
+
+        & img {
+            height: 15px;
+            margin-left: 20px;
+        }
+    }
+
+    // Contacts section btn
+    &-send { 
+        background-color: $color-blue-gray; 
+        margin-top: 60px;
+
+        &:hover {
+            background-color: $color-gray;
+        }
+    }
+
+    & img {
+        height: 20px;
+        margin-left: 30px;
+    }
+
+    @include respond(big-desktop) {   
+        .btn{
+            font-size: 16px;
+            padding: 10px 35px;
+        }     
+    }
+} 
+
+// Gallery section btn
+.btn-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

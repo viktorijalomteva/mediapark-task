@@ -1,0 +1,140 @@
+.projects {
+    background-image: linear-gradient(219deg, rgba($color-blue-light, 100%), rgba($color-white-blue, 100%));
+    margin-bottom: 250px;
+    padding-top: 71px;
+    height: 750px;
+
+    & .heading-secondary {
+        width: 500px;
+        padding: 50px 0 50px 100px;
+        position: relative;
+        z-index: 3;
+    }
+
+    // Background decoration
+    &__right-side {
+        background-color: $color-white;
+        width: 900px;
+        height: 700px;
+        position: relative;
+        float: right;
+        top: -100px;
+        border-top-left-radius: 300px;
+        z-index: 1;
+    }
+
+    &__gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 348px);
+        grid-column-gap: 80px;
+        margin-left: 217px;
+        position: absolute;
+        z-index: 2;
+
+        &-card {
+            height: 608px;
+            overflow: hidden;
+            border-radius: 0 100px 30px 30px;
+            background-color: $color-white;
+            box-shadow: $item-shadow;
+        }
+
+        img {
+            width: 100%;
+            max-height: 348px;
+            object-fit: cover;
+        }
+
+        &-text {
+            padding: 10px 20px 0 40px;
+        }
+    }
+
+    .card__heading {
+        font-family: montserrat-semibold;
+        font-size: 26px;
+        color: $color-gray;
+        margin: 15px 0;  
+    }
+
+    .card__text {
+        font-family: montserrat-medium;
+        font-size: $default-font-size;
+        color: $color-gray-light;
+        line-height: 1.5;
+        word-spacing: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card__arrow {
+        height: 20px;
+        margin-top: 10px;
+        float: right;
+        width: auto;
+        cursor: pointer;
+    }
+
+    .arrow {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: $color-blue;
+        cursor: pointer;
+        position: absolute;
+        top: 85%;
+        z-index: 4;
+    }
+    .arrow img  {
+        width: 30px;
+    }
+    .arrow-left img {
+        transform: rotate(180deg);
+    }
+    .arrow-left {
+        left: 35px;
+    }
+    .arrow-right {
+        right: 35px;
+    }
+
+    @include respond(tab-port) {
+        &__right-side {
+            display: none;   
+        }
+    }
+
+    @include respond(phone) {
+        margin-bottom: 100px;
+
+        & .heading-secondary {
+            width: 400px;
+            font-size: 40px;
+        }
+
+        &__gallery {
+            grid-template-columns: repeat(3, 300px);
+            grid-column-gap: 50px;
+
+            &-card {
+                height: 500px;
+                img {
+                    max-height: 250px;
+                }
+            }   
+        }
+    }
+    @include respond(xs-phone) {
+        &__gallery {
+            margin-left: 80px;
+        }
+
+        & .heading-secondary {
+            font-size: 30px !important;
+            width: 350px;
+            padding: 30px 0 40px 80px;
+        }
+    }
+}

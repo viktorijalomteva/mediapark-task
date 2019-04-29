@@ -1,0 +1,266 @@
+.contacts {
+    display: flex;
+    margin: 70px 0;
+    box-shadow: $item-shadow;
+
+    // Left side of section
+    &-people {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 110px;
+        background-color: $color-blue-light;
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        
+        // General info
+        &--info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &:not(:last-child) {
+                margin-bottom: 35px;
+            }
+        // Photo
+            & img {
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-right: 30px;
+            }
+        }
+        // Contact info
+        &--details {   
+            line-height: 1.5;
+
+            &-name {
+                font-family: quicksand-bold;
+                font-size: 26px;
+                color: $color-blue-dark;
+            }
+    
+            &-contacts {
+                display: block;
+                width: 50%;
+                font-size: $default-font-size;
+                font-family: montserrat-medium;
+                color: $color-gray-light;
+            }
+        }
+    }
+    
+    // Right side of section
+    &__message {
+        width: 50%;
+        padding: 49px 0;
+        background-color: $color-white;
+
+        & h2 {
+            color: $color-blue-dark;
+            margin-bottom: 60px;
+        }
+    }
+    // Form wrapper
+    &__form {
+        padding: 0 30px;
+        width: 90%;
+    }
+
+    @include respond(tab-port) {
+        flex-direction: column;
+        
+        &-people {
+            width: 100%;
+            padding: 100px 20px;
+            flex-direction: row;
+            justify-content: center;
+            background-color: $color-blue-light;
+            clip-path: none;        
+
+            &--info {
+                flex-direction: column;
+                align-self: center;
+                margin-bottom: 0 !important;
+
+                & img {
+                    margin-right: 0;
+                    margin-bottom: 30px;
+                }
+            }
+
+            &--details {   
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &-name {
+                    font-size: 22px;
+                }
+                &-contacts {
+                    width: 60%;
+                    text-align: center;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        &__message {
+            width: 100%;
+        }
+
+        &__form {
+            padding: 0 80px;
+            width: 90%;
+        }
+    }
+
+    @include respond(phone) {
+        &-people {
+            flex-direction: column;
+
+            &--info {
+                margin-top: 30px;
+                &:not(:last-child) {
+                    margin-bottom: 35px !important;
+                }
+            }
+        }
+
+        & .heading-secondary {
+            font-size: 40px;
+        }
+
+        &__form {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}
+
+// Form
+.form {
+    &__group {
+        margin-bottom: 20px;
+    }
+
+    &__input {
+        font-family: montserrat-medium;
+        font-size: 20px;
+        color: $color-gray-light;
+        padding: 10px 0;
+        border: none;
+        border-bottom: 1px solid $color-blue-dark;
+        width: 90%;
+        display: block;
+        
+        &:focus {
+            outline: none;
+        }
+        // Invalid input fields
+        &:focus:invalid {
+            border-bottom: 1px solid $color-red;
+            box-shadow: none;
+            outline: none;
+        }
+        &:focus:valid {
+            border-bottom: 1px solid $color-blue-dark;
+        }
+    }
+    // Default labels
+    &__label {
+        font-size: 16px;
+        font-family: montserrat-medium;
+        margin: 8px 0 0 10px;
+        display: block;
+        transition: all .2s;
+
+        // Warning labels
+        &-warning {
+            color: $color-red;
+            display: none;
+        }
+    }
+
+    // Show labels
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__group:last-child {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    // Custom checkbox
+    &__accept {
+        margin-right: 20px;
+        margin-top: 10px;
+        position: relative;
+        display: none;
+        cursor: pointer;
+
+        &-btn {
+            display: block;
+            height: 25px;
+            width: 25px;
+            border: 1px solid $color-blue-dark;
+            border-radius: 1px;
+            position: absolute;        
+            margin-top: 5px;
+
+            &::after {
+                content: "";
+                display: block;
+                height: 25px;
+                width: 25px;
+                position: absolute;
+                background-color: $color-blue-dark;
+                opacity: 0;
+                transition: opacity .3s;
+            }
+        }
+
+        &:checked ~ &-text &-btn::after {
+            opacity: 1;
+        }
+    
+        &-text {
+            font-size: $default-font-size;  
+            font-family: montserrat-medium;
+            margin-top: 20px;
+            margin-right: 40px;
+            line-height: 1.5;
+            position: relative;          
+        }
+    }
+
+    // Checkbox warning
+    #label-accept {
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    @include respond(tab-port) {
+        &__group {
+            margin-bottom: 10px;
+        }
+
+        &__input {
+            font-size: 18px;
+        }
+    }
+}
+// Clear default input borders
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}

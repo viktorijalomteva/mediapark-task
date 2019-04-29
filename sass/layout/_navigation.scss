@@ -1,0 +1,79 @@
+// Navigation bar
+.nav {
+    background-color: $color-white;
+    // Company name
+    &__name {
+        font-size: 22px;
+        color: $color-gray-dark;
+        padding: 21.5px 0 21.5px 137px;   
+        text-transform: uppercase;
+        font-family: quicksand-bold;
+    }
+    // Nav items
+    &__list {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 27.5px 99px 21.5px 0;   
+        font-family: montserrat-medium;
+        
+        li {
+            list-style-type: none;
+            margin-right: 40px;
+        }
+
+        a {
+            font-size: $default-font-size;
+            color: $color-gray;
+            text-decoration: none;
+            transition: all .2s;
+
+            &:hover {
+                color: $color-gray-light;
+            }
+        }
+    }
+
+    // Media queries
+    @include respond(phone) {
+        &__list {
+            display: none;   
+        }
+        .nav-btn {
+            display: block;
+        }
+    }
+
+    @include respond(tab-port) {
+        a {
+            font-size: 16px;
+        }
+        li {
+            margin-right: 30px;
+        }
+        &__name {
+            font-size: 20px;
+            padding: 16.5px 0 16.5px 80px; 
+        }
+        &__list {
+            padding: 18.5px 30px 13.5px 0;    
+        }
+    }
+}
+
+// Nav Button
+.nav-btn {
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    right: 50px;
+    display: none;
+}
+.btn-line {
+    width: 35px;
+    height: 4px;
+    margin: 0 0 5px 0;
+    border-radius: 3px;
+    background: $color-gray-light;
+}
